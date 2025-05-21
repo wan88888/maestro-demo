@@ -1,0 +1,10 @@
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn: "${USERNAME_SELECTOR}"
+- inputText: "standard_user"
+- tapOn: "${PASSWORD_SELECTOR}"
+- inputText: "secret_sauce"
+- tapOn: "${LOGIN_BUTTON_SELECTOR}"
+- assertVisible: "${PRODUCTS_LABEL}"
+- stopApp 

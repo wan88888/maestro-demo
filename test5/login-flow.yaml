@@ -1,0 +1,10 @@
+appId: com.swaglabsmobileapp
+---
+# Parameterized login flow
+- tapOn: "Username"
+- eraseText
+- inputText: ${username}
+- tapOn: "Password"
+- eraseText
+- inputText: ${password}
+- tapOn: "LOGIN" 

@@ -1,0 +1,34 @@
+appId: com.swaglabsmobileapp
+---
+# 正常登录流程
+- launchApp
+- runFlow:
+    file: login-flow.yaml
+    env:
+      username: "standard_user"
+      password: "secret_sauce"
+- assertVisible: "PRODUCTS"
+
+# 执行退出登录
+- tapOn:
+    point: "7%,5%"
+- tapOn: "LOGOUT"
+
+# 异常登录测试1：错误的密码
+- runFlow:
+    file: login-flow.yaml
+    env:
+      username: "standard_user"
+      password: "test"
+- assertVisible: "Username and password do not match any user in this service."
+
+# 异常登录测试2：被锁定的用户
+- runFlow:
+    file: login-flow.yaml
+    env:
+      username: "locked_out_user"
+      password: "secret_sauce"
+- assertVisible: "Sorry, this user has been locked out."
+
+# 测试完成，清理
+- stopApp 
