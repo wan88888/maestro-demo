@@ -10,9 +10,16 @@
 
 ```
 maestro-demo/
-├── test5/
-│   ├── sauceLabs-aos-exception.yaml  # 主测试文件，包含异常测试场景
-│   └── login-flow.yaml               # 可重用的登录流程子模块
+├── test1/                 # 并行测试示例目录 (--shard-all)
+├── test2/                 # 并行测试示例目录 (--shard-split)
+├── test3/                 # 跨平台测试目录，使用环境变量区分平台
+│   └── login-flow.yaml    # 参数化的登录流程测试
+├── test4/                 # 跨平台测试目录，使用脚本运行
+│   ├── config.json        # 测试配置文件
+│   └── run-test.sh        # 测试运行脚本
+└── test5/                 # 异常场景测试目录
+    ├── sauceLabs-aos-exception.yaml  # 异常测试场景
+    └── login-flow.yaml               # 可重用的登录流程子模块
 ```
 
 ## 测试案例说明
@@ -33,16 +40,14 @@ maestro-demo/
 
 ## 如何运行测试
 
-### 单个测试运行
-
-运行并行测试：
+### 运行并行测试：
 
 ```bash
 maestro test test1/ --shard-all=2
 #or
 maestro test test2/ --shard-split=2
 ```
-运行不同平台测试：
+### 运行不同平台测试：
 
 ```bash
 cd test3
@@ -55,7 +60,7 @@ cd test4
 ./run-test.sh android
 ./run-test.sh ios
 ```
-运行异常场景测试：
+### 运行异常场景测试：
 
 ```bash
 cd test5
